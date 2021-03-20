@@ -1,0 +1,29 @@
+#title {
+  font-size: 24px;
+  color: blueviolet;
+}
+.description {
+  font-style: italic;
+}
+
+#todo_list {
+  padding-left: 0;
+}
+
+.remove-item:hover {
+  cursor: pointer;
+}
+
+#todo_list li {
+  list-style-type: none;
+}
+
+.todo-item-input {
+  border: none;
+  font-size: 16px;
+}
+
+.remove-item {
+  color: red;
+  font-size: 16px;
+}
