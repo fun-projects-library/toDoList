@@ -38,6 +38,7 @@ async function getItems () {
 
 function listItem (todoItems) {
     const ulList = document.getElementById('todo_list');
+    //console.log(todoItems);
 
     todoItems.forEach((item) => {
         // console.log(item.title)
@@ -51,7 +52,11 @@ function listItem (todoItems) {
         listItem.id = item.id;
         
         listItem.querySelector('.remove-item').addEventListener('click', removeItem);
+
         listItem.querySelector('.mark-as-completed').addEventListener('click', completeItem);
+
+        listItem.querySelector('.todo-item-input').addEventListener('focusout', editItem);
+
         listItem.querySelector('.todo-item-input').style.textDecoration = item.completed && 'line-through';
         // listItem.addEventListener('click', removeItem);
         ulList.appendChild(listItem);
@@ -84,8 +89,8 @@ async function removeItem(e) {
 
 
 async function completeItem(e){
-  // console.log(e.target.parentElement.id);
-  // console.log(e.target.checked);
+  //console.log(e.target.parentElement.id);
+  //console.log(e.target.checked);
   const item = {
     completed:  e.target.checked
   }
@@ -104,6 +109,29 @@ async function completeItem(e){
 
   e.target.parentElement.querySelector('.todo-item-input').style.textDecoration = e.target.checked ? 'line-through' : 'none';
 
+}
+
+async function editItem(e){
+  console.log(e);
+
+
+  const item = {
+    title:  e.target.value
+  }
+
+  const data = {
+    method: 'PUT',
+    body: JSON.stringify(item),
+    headers: {
+      'Content-type': 'application/json'
+    }
+  }
+
+  const response = await fetch('http://127.0.0.1:8080/api/todoitems/'+ e.target.parentElement.id, data);
+  // const jsonResponse = await response.json();
+  // listItem([jsonResponse]);
+
+  // e.target.parentElement.querySelector('.todo-item-input').style.textDecoration = e.target.checked ? 'line-through' : 'none';
 }
 
 getItems();
