@@ -3,7 +3,6 @@
 
 
 
-
 async function addItem () {
     
     const value = document.getElementById('todo_input').value;
@@ -28,8 +27,6 @@ async function addItem () {
 
 }
 
-
-
 async function getItems () {
     const response = await fetch('http://127.0.0.1:8080/api/todoitems/');
     const jsonResponse = await response.json();
@@ -47,6 +44,7 @@ function listItem (todoItems) {
         listItem.innerHTML = `
           <input type="checkbox" class="mark-as-completed" ${item.completed && 'checked'}>  
           <input type="text" class="todo-item-input" value="${item.title}">
+          <a class="edit-item" href="">Edit</a>
           <span class="remove-item">Delete</span>
         `;
         listItem.id = item.id;
@@ -57,12 +55,13 @@ function listItem (todoItems) {
 
         listItem.querySelector('.todo-item-input').addEventListener('focusout', editItem);
 
+        listItem.querySelector('.edit-item').addEventListener('click', chooseInput);
+
         listItem.querySelector('.todo-item-input').style.textDecoration = item.completed && 'line-through';
         // listItem.addEventListener('click', removeItem);
         ulList.appendChild(listItem);
       });
 }
-
 
 async function removeItem(e) {
     
@@ -86,7 +85,6 @@ async function removeItem(e) {
     e.target.parentElement.remove();
   
 }
-
 
 async function completeItem(e){
   //console.log(e.target.parentElement.id);
@@ -134,10 +132,17 @@ async function editItem(e){
   // e.target.parentElement.querySelector('.todo-item-input').style.textDecoration = e.target.checked ? 'line-through' : 'none';
 }
 
+async function chooseInput(e){
+  //console.log(e.target.previousElementSibling);
+  const path = e.target.parentElement.id;
+  console.log(path);
+  const result = e.target.parentElement.id + `87`;
+  e.target.previousElementSibling.id = result;
+  e.target.href = `#${result}`;
+  //console.log(e.target.href)
+  
+}
 getItems();
-
-
-
 
 
 
