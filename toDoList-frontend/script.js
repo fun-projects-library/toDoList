@@ -5,10 +5,13 @@
 
 
 async function addItem () {
-
-    const item = {
-        title:  document.getElementById('todo_input').value
-      }
+    
+    const value = document.getElementById('todo_input').value;
+    
+    
+    if(value) {
+    
+    const item = {title: document.getElementById('todo_input').value}
     
       const data = {
         method: 'POST',
@@ -21,9 +24,10 @@ async function addItem () {
       const response = await fetch('http://127.0.0.1:8080/api/todoitems/', data);
       const jsonResponse = await response.json();
       listItem([jsonResponse]);
-
+    }
 
 }
+
 
 
 async function getItems () {
@@ -181,7 +185,4 @@ getItems();
 //         alert("Enter an item!")
 //     }
 // }
-
-
-
 
