@@ -46,6 +46,7 @@ function listItem (todoItems) {
           <input type="text" class="todo-item-input" value="${item.title}">
           <a class="edit-item" href="">Edit</a>
           <span class="remove-item">Delete</span>
+          <span class="date">updatedAt ${item.updatedAt}</span>
         `;
         listItem.id = item.id;
         

@@ -8,6 +8,7 @@
 
 #todo_list {
   padding-left: 0;
+  font-size: 20px;
 }
 
 .remove-item:hover {
@@ -26,4 +27,12 @@
 .remove-item {
   color: red;
   font-size: 16px;
+}
+
+.todo-item-input:hover {
+  background-color: bisque;
+}
+
+.date {
+  font-size: 10px;
 }
