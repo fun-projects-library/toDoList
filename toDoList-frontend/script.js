@@ -7,7 +7,6 @@ async function addItem () {
     
     const value = document.getElementById('todo_input').value;
     
-    
     if(value) {
     
     const item = {title: document.getElementById('todo_input').value}
@@ -22,6 +21,7 @@ async function addItem () {
     
       const response = await fetch('http://127.0.0.1:8080/api/todoitems/', data);
       const jsonResponse = await response.json();
+      //console.log(jsonResponse);
       listItem([jsonResponse]);
     }
 
@@ -81,15 +81,15 @@ async function removeItem(e) {
         method: 'DELETE',
     }
     
-    const response = await fetch('http://127.0.0.1:8080/api/todoitems/' + e.target.parentElement.id, data);
-    await response.json();
+    await fetch('http://127.0.0.1:8080/api/todoitems/' + e.target.parentElement.id, data);
+    //await response.json();
     e.target.parentElement.remove();
   
 }
 
 async function completeItem(e){
   //console.log(e.target.parentElement.id);
-  //console.log(e.target.checked);
+  console.log(e);
   const item = {
     completed:  e.target.checked
   }
@@ -126,11 +126,12 @@ async function editItem(e){
     }
   }
 
-  const response = await fetch('http://127.0.0.1:8080/api/todoitems/'+ e.target.parentElement.id, data);
+  await fetch('http://127.0.0.1:8080/api/todoitems/'+ e.target.parentElement.id, data);
+
   // const jsonResponse = await response.json();
   // listItem([jsonResponse]);
 
-  // e.target.parentElement.querySelector('.todo-item-input').style.textDecoration = e.target.checked ? 'line-through' : 'none';
+  
 }
 
 async function chooseInput(e){
@@ -148,75 +149,4 @@ getItems();
 
 
 
-
-
-
-
-// --- toDoList with LocalStorage ---
-
-
-// let itemList = [];
-
-
-// function removeItem (item) {
-//     const filteredArray = itemList.filter( element => element !== item.target.innerHTML);
-//     localStorage.setItem("todoItems" , filteredArray)
-//     console.log(filteredArray)
-//     //document.location.reload(true)
-//     //document.getElementById("todo_list").innerHTML = "";
-//     print()
-// }
-
-// // itemList.forEach( element => {
-// //     let item = document.createElement("li");
-// //     item.innerHTML =element;
-// //     item.addEventListener("click", removeItem)
-// //     document.getElementById("todo_list").appendChild(item);
-// // })
-
-// function print(){
-//     itemList = localStorage.getItem("todoItems") ? localStorage.getItem("todoItems").split(",") : [];
-//     document.getElementById("todo_list").innerHTML = "";
-    
-//     for(i=0; i<itemList.length; i++){
-//         let item = document.createElement("li");
-//         item.innerHTML =itemList[i];
-//         item.addEventListener("click", removeItem)
-//         document.getElementById("todo_list").appendChild(item);
-//     }
-// }
-
-// print()
-
-// // --- Keyboard Event
-// const keyboard = document.getElementById("todo_input");
-
-// keyboard.addEventListener("keyup" , (event) => {
-//     const keyName = event.key;
-//     if(keyName === "Enter"){ addItem() }
-// }, false)
-
-
-// const addItem = () => {
-//     let inputValue = document.getElementById("todo_input").value;
-    
-//     if(inputValue){
-//         let item = document.createElement("li");
-//         item.innerHTML =inputValue;
-//         // item.onclick = () => {
-//         //     //document.getElementById("todo_list").removeChild(item)
-//         //     removeItem(item)  // you can use them both. we are creating a newfunc here.   
-//         // };
-        
-//         document.getElementById("todo_list").appendChild(item);
-
-//         itemList.push(document.getElementById("todo_input").value)
-        
-//         localStorage.setItem("todoItems" , itemList)
-
-//         document.getElementById("todo_input").value = "";
-//     } else {
-//         alert("Enter an item!")
-//     }
-// }
 
