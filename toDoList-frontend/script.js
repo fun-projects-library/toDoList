@@ -43,7 +43,7 @@ async function getItems () {
     const response = await fetch('http://127.0.0.1:8080/api/todoitems/');
     const jsonResponse = await response.json();
     listItem(jsonResponse);
-    console.log(jsonResponse)
+    //console.log(jsonResponse)
 }
 
 function listItem (todoItems) {
@@ -106,7 +106,7 @@ async function removeItem(e) {
 
 async function completeItem(e){
   //console.log(e.target.parentElement.id);
-  console.log(e);
+  //console.log(e);
   const item = {
     completed:  e.target.checked
   }
@@ -169,7 +169,7 @@ async function tasks(){
   const response = await fetch('http://127.0.0.1:8080/api/todoitems/');
   const jsonResponse = await response.json();
   //listItem(jsonResponse);
-  console.log(jsonResponse)
+  //console.log(jsonResponse)
 
   count = 0;
   jsonResponse.forEach( element => { element.completed ? count++ : ""})
