@@ -1,9 +1,14 @@
+body {
+  background-color: bisque;
+}
+
 #title {
   font-size: 24px;
   color: blueviolet;
 }
 .description {
   font-style: italic;
+  font-size: 14px;
 }
 
 #todo_list {
@@ -22,6 +27,9 @@
 .todo-item-input {
   border: none;
   font-size: 16px;
+  border-radius: 3em;
+  padding: 4px;
+  margin: 2px;
 }
 
 .remove-item {
@@ -30,7 +38,7 @@
 }
 
 .todo-item-input:hover {
-  background-color: bisque;
+  background-color: rgb(8, 197, 81);
 }
 
 .date {
@@ -39,4 +47,26 @@
 
 .date:hover {
   font-size: 20px;
+}
+
+#warning {
+  color: red;
+  font-size: 12px;
+  margin-top: 0;
+}
+
+#button {
+  font-size: 18px;
+}
+
+#todo_input {
+  font-size: 18px;
+}
+
+#tasksLeft {
+  float: right;
+  margin-right: 10%;
+  border: 5px solid blueviolet;
+  border-radius: 2em;
+  padding: 1em;
 }

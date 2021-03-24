@@ -2,6 +2,8 @@
 // ---- !!! --- CRUD - Create Read Update Delete
 
 let keyboard = document.getElementById("todo_input");
+let warning = document.querySelector("#warning");
+let tasksLeft = document.querySelector("#tasksLeft");
 
 keyboard.addEventListener("keyup", (e)=>{
   //console.log(e)
@@ -29,8 +31,10 @@ async function addItem () {
     
       const response = await fetch('http://127.0.0.1:8080/api/todoitems/', data);
       const jsonResponse = await response.json();
-      //console.log(jsonResponse);
+      //console.log(response);
       listItem([jsonResponse]);
+    } else {
+      warning.innerHTML = "(Please, enter an item!)"
     }
 
 }
@@ -38,7 +42,8 @@ async function addItem () {
 async function getItems () {
     const response = await fetch('http://127.0.0.1:8080/api/todoitems/');
     const jsonResponse = await response.json();
-    listItem(jsonResponse)
+    listItem(jsonResponse);
+    console.log(jsonResponse)
 }
 
 function listItem (todoItems) {
@@ -71,6 +76,9 @@ function listItem (todoItems) {
         // listItem.addEventListener('click', removeItem);
         ulList.appendChild(listItem);
       });
+
+      tasks(todoItems);
+
 }
 
 async function removeItem(e) {
@@ -93,7 +101,7 @@ async function removeItem(e) {
     await fetch('http://127.0.0.1:8080/api/todoitems/' + e.target.parentElement.id, data);
     //await response.json();
     e.target.parentElement.remove();
-  
+    tasks();
 }
 
 async function completeItem(e){
@@ -116,6 +124,8 @@ async function completeItem(e){
   //listItem([jsonResponse]);
 
   e.target.parentElement.querySelector('.todo-item-input').style.textDecoration = e.target.checked ? 'line-through' : 'none';
+
+  tasks();
 
 }
 
@@ -153,6 +163,20 @@ async function chooseInput(e){
   //console.log(e.target.href)
   
 }
+
+async function tasks(){
+
+  const response = await fetch('http://127.0.0.1:8080/api/todoitems/');
+  const jsonResponse = await response.json();
+  //listItem(jsonResponse);
+  console.log(jsonResponse)
+
+  count = 0;
+  jsonResponse.forEach( element => { element.completed ? count++ : ""})
+  tasksLeft.innerHTML = `You have <span style="font-size:22px;">${jsonResponse.length - count}</span> tasks left to complete!`;
+}
+
+
 getItems();
 
 
