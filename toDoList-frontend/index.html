@@ -9,13 +9,12 @@
     <link href="style.css" rel="stylesheet">
 </head>
 <body>
-    <h1> Enes's First Web Application</h1>
+    <h1 id="title">ToDo list</h1>
     <div class="entire">
     <span id="tasksLeft"></span>
-    <h2 id="title">ToDo list</h2>
-    <p class="description"> Enter your task and click add or press Enter!</p>
+    <p class="description"> Enter your task and click ADD or press ENTER!</p>
 
-    <input type="text" id="todo_input" name="todo_input">
+    <input type="text" id="todo_input" name="todo_input" placeholder="Please, write your toDos here!">
     <button type="button" onclick="addItem()" id="button">Add</button>
     
     <p id="warning"></p>
