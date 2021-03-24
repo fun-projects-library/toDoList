@@ -1,7 +1,15 @@
 
 // ---- !!! --- CRUD - Create Read Update Delete
 
+let keyboard = document.getElementById("todo_input");
 
+keyboard.addEventListener("keyup", (e)=>{
+  //console.log(e)
+  const keyName = e.key;
+  if(keyName === "Enter"){
+    addItem()
+  }
+},false)
 
 async function addItem () {
     
@@ -36,6 +44,7 @@ async function getItems () {
 function listItem (todoItems) {
     const ulList = document.getElementById('todo_list');
     //console.log(todoItems);
+    document.getElementById('todo_input').value = "";
 
     todoItems.forEach((item) => {
         // console.log(item.title)
