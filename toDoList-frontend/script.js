@@ -54,6 +54,7 @@ function listItem (todoItems) {
     todoItems.forEach((item) => {
         // console.log(item.title)
         // ulList.innerHTML += `<li onclick="removeItem(this)"> ${item.title} </li>`
+        //console.log(item)
         const listItem = document.createElement('li');
         listItem.innerHTML = `
           <input type="checkbox" class="mark-as-completed" ${item.completed && 'checked'}>  
@@ -63,7 +64,7 @@ function listItem (todoItems) {
           <span class="date">updatedAt ${item.updatedAt}</span>
         `;
         listItem.id = item.id;
-        
+        //console.log(listItem)
         listItem.querySelector('.remove-item').addEventListener('click', removeItem);
 
         listItem.querySelector('.mark-as-completed').addEventListener('click', completeItem);
