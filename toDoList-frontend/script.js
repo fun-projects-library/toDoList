@@ -174,7 +174,7 @@ async function tasks(){
 
   count = 0;
   jsonResponse.forEach( element => { element.completed ? count++ : ""})
-  tasksLeft.innerHTML = `You have <span style="font-size:22px;">${jsonResponse.length - count}</span> tasks left to complete!`;
+  tasksLeft.innerHTML = `You have <u><span style="font-size:24px;">${jsonResponse.length - count}</span></u> tasks left to complete!`;
 }
 
 
