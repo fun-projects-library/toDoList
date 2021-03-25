@@ -25,10 +25,12 @@ body {
 
 .todo-item-input {
   border: none;
-  font-size: 16px;
+  font-size: 14px;
   border-radius: 3em;
   padding: 4px;
   margin: 2px;
+  padding-left: 8px;
+  width: 200px;
 }
 
 .remove-item {
@@ -55,7 +57,8 @@ body {
 }
 
 #button {
-  font-size: 18px;
+  font-size: 16px;
+  padding: 2px 8px;
 }
 
 #todo_input {
@@ -68,4 +71,8 @@ body {
   border: 5px solid blueviolet;
   border-radius: 2em;
   padding: 1em;
+}
+
+.edit-item {
+  color: blueviolet;
 }
