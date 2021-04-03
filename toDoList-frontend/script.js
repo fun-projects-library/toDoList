@@ -58,7 +58,7 @@ function listItem (todoItems) {
         const listItem = document.createElement('li');
         listItem.innerHTML = `
           <input type="checkbox" class="mark-as-completed" ${item.completed && 'checked'}>  
-          <input type="text" class="todo-item-input" value="${item.title}">
+          <input type="text" class="todo-item-input" value="${item.title}" style="outline:none">
           <a class="edit-item" href="">Edit</a>
           <span class="remove-item">Delete</span>
           <span class="date">updatedAt ${item.updatedAt}</span>
